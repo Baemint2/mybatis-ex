@@ -9,7 +9,10 @@ public interface StudentDao {
   int insertStudent(StudentDto student);
   int updateStudent(StudentDto student);
   int deleteStudent(int student_no);
-  List<StudentDto> selectStudentList(Map<String, Object> params);
+  List<StudentDto> selectStudentList();
+  List<StudentDto> selectStudentTop3List();
+  List<StudentDto> selectRangeStudentList(Map<String, Object> params);
   int getStudentCount();
   StudentDto selectStudentByNo(int student_no);
+  double getTotalAverage();
 }

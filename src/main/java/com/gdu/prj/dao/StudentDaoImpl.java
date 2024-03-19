@@ -63,13 +63,22 @@ public class StudentDaoImpl implements StudentDao {
   }
 
   @Override
-  public List<StudentDto> selectStudentList(Map<String, Object> params) {
+  public List<StudentDto> selectStudentList() {
     SqlSession sqlSession = factory.openSession();
-    List<StudentDto> studentList = sqlSession.selectList("com.gdu.prj.dao.student_t.selectStudentList", params);
+    List<StudentDto> studentList = sqlSession.selectList("com.gdu.prj.dao.student_t.selectStudentList");
     sqlSession.close();
     return studentList;
   }
+  
+  
 
+  @Override
+  public List<StudentDto> selectStudentTop3List() {
+    SqlSession sqlSession = factory.openSession();
+    List<StudentDto> studentList = sqlSession.selectList("com.gdu.prj.dao.student_t.selectStudentTop3List");
+    sqlSession.close();
+    return studentList;
+  }
   @Override
   public int getStudentCount() {
     SqlSession sqlSession = factory.openSession();
@@ -85,5 +94,22 @@ public class StudentDaoImpl implements StudentDao {
     sqlSession.close();
     return student;
   }
+  
+  
+  @Override
+  public List<StudentDto> selectRangeStudentList(Map<String, Object> params) {
+    SqlSession sqlSession = factory.openSession();
+    List<StudentDto> studentRangeList = sqlSession.selectList("com.gdu.prj.dao.student_t.selectRangeStudentList");
+    sqlSession.close();
+    return studentRangeList;
+  }
+  @Override
+  public double getTotalAverage() {
+    SqlSession sqlSession = factory.openSession();
+    double average = sqlSession.selectOne("com.gdu.prj.dao.student_t.getTotalAverage");
+    sqlSession.close();
+    return average;
+  }
 
+  
 }

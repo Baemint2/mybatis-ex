@@ -11,11 +11,13 @@ import com.gdu.prj.common.ActionForward;
 import com.gdu.prj.service.StudentService;
 import com.gdu.prj.service.StudentServiceImpl;
 
-public class StudentController extends HttpServlet {
-
-  private static final long serialVersionUID = 1L;
-
-  private StudentService studentService = new StudentServiceImpl();
+/**
+ * Servlet implementation class StudentsController
+ */
+public class StudentsController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	private StudentService studentService = new StudentServiceImpl();
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,7 +32,7 @@ public class StudentController extends HttpServlet {
       actionForward = studentService.getStudentList(request);
       break;
     case "/student/write.do":
-      actionForward = new ActionForward("/board/write.jsp", false);
+      actionForward = new ActionForward("/student/write.jsp", false);
       break;
     case "/student/register.do":
       actionForward = studentService.addStudent(request);
@@ -66,7 +68,7 @@ public class StudentController extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     // TODO Auto-generated method stub
-    super.doPost(request, response);
+    doGet(request, response);
   }
 
 }
